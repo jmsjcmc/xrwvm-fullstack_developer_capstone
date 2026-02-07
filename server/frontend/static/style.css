@@ -124,3 +124,26 @@ img{
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
 }
+
+.details {
+  background-color: #f7f5fa;
+  border-radius: 15px;
+  margin: 15px;
+  min-width: 280px;
+  max-width: 420px;
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+}
+
+.title {
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.card {
+  background-color: white;
+}
+
+.banner h1 {
+  margin-bottom: 10px;
+}
