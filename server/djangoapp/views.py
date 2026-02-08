@@ -194,14 +194,18 @@ def initiate():
 
 
 def get_dealerships(request, state="All"):
-    endpoint = "/fetchDealers" if state == "All" else f"/fetchDealers/{state}"
+    endpoint = (
+        "/fetchDealers" if state == "All" else f"/fetchDealers/{state}"
+    )
     dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
 
 
 def get_dealer_reviews(request, dealer_id):
     if not dealer_id:
-        return JsonResponse({"status": 400, "message": "Bad Request"})
+        return JsonResponse(
+            {"status": 400, "message": "Bad Request"}
+        )
 
     endpoint = f"/fetchReviews/dealer/{dealer_id}"
     reviews = get_request(endpoint)
@@ -215,7 +219,9 @@ def get_dealer_reviews(request, dealer_id):
 
 def get_dealer_details(request, dealer_id):
     if not dealer_id:
-        return JsonResponse({"status": 400, "message": "Bad Request"})
+        return JsonResponse(
+            {"status": 400, "message": "Bad Request"}
+        )
 
     endpoint = f"/fetchDealer/{dealer_id}"
     dealership = get_request(endpoint)
@@ -228,19 +234,30 @@ def add_review(request):
     Only authenticated users are allowed to post.
     """
     if request.user.is_anonymous:
-        return JsonResponse({"status": 403, "message": "Unauthorized"})
+        return JsonResponse(
+            {"status": 403, "message": "Unauthorized"}
+        )
 
     try:
         data = json.loads(request.body)
         response = post_review(data)
 
         if response:
-            return JsonResponse({"status": 200, "message": "Review posted successfully"})
+            return JsonResponse(
+                {"status": 200, "message": "Review posted successfully"}
+            )
 
-        return JsonResponse({"status": 500, "message": "Failed to post review"})
+        return JsonResponse(
+            {"status": 500, "message": "Failed to post review"}
+        )
 
     except json.JSONDecodeError:
-        return JsonResponse({"status": 400, "message": "Invalid JSON"})
+        return JsonResponse(
+            {"status": 400, "message": "Invalid JSON"}
+        )
 
     except Exception as exc:
-        return JsonResponse({"status": 401, "message": f"Error in posting review: {exc}"})
+        return JsonResponse(
+            {"status": 401, "message": f"Error in posting review: {exc}"}
+        )
+
