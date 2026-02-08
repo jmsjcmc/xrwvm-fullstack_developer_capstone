@@ -24,7 +24,9 @@ class CarModel(models.Model):
         CarMake,
         on_delete=models.CASCADE,
     )
-    dealer_id = models.IntegerField()
+    dealer_id = models.IntegerField(
+        null=True, blank=True
+    )
     name = models.CharField(max_length=100)
 
     CAR_TYPES = [

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from server.djangoapp.populate import initiate
+from .populate import initiate
 from .models import CarMake, CarModel
 from .restapis import analyze_review_sentiments, get_request, post_review
 
@@ -66,13 +66,13 @@ def registration(request):
 
 
 def get_cars(request):
-    count = CarMake.objects.count()
-    if count == 0:
+    if CarModel.objects.count() == 0:
         initiate()
 
     car_models = CarModel.objects.select_related("car_make")
     cars = [
-        {"CarModel": cm.name, "CarMake": cm.car_make.name} for cm in car_models
+        {"CarModel": cm.name, "CarMake": cm.car_make.name}
+        for cm in car_models
     ]
     return JsonResponse({"CarModels": cars})
 
