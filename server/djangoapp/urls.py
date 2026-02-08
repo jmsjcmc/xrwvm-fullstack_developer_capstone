@@ -24,11 +24,12 @@ urlpatterns = [
         views.registration,
         name="register",
     ),
-
     path(
         "get_cars", 
         view=views.get_cars, 
-        name ="getcars"),
+        name ="getcars",
+    ),
+
     # Dealership routes
     path(
         "get_dealers",
