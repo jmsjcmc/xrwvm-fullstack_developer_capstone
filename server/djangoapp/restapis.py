@@ -39,9 +39,15 @@ def get_request(endpoint, **kwargs):
         return None
 
 
-def analyze_review_sentiments(review_text):
-    # Your implementation here
-    return "positive"  # or some actual sentiment analysis
+def analyze_review_sentiments(text):
+    request_url = sentiment_analyzer_url+"analyze/"+text
+    try:
+        # Call get method of requests library with URL and parameters
+        response = requests.get(request_url)
+        return response.json()
+    except Exception as err:
+        print(f"Unexpected {err=}, {type(err)=}")
+        print("Network exception occurred")
 
 
 def post_review(data_dict):
