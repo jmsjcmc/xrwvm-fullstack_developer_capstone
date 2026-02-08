@@ -4,7 +4,6 @@ from django.conf import settings
 
 from . import views
 
-
 app_name = "djangoapp"
 
 urlpatterns = [
@@ -25,9 +24,9 @@ urlpatterns = [
         name="register",
     ),
     path(
-        "get_cars", 
-        view=views.get_cars, 
-        name ="getcars",
+        "get_cars",
+        view=views.get_cars,
+        name="getcars",
     ),
 
     # Dealership routes
