@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from .populate import initiate
-from .models import CarMake, CarModel
+from .models import CarModel
 from .restapis import analyze_review_sentiments, get_request, post_review
 
 logger = logging.getLogger(__name__)
