@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+
+from server.djangoapp.populate import initiate
 from .models import CarMake, CarModel
 from .restapis import analyze_review_sentiments, get_request, post_review
 
